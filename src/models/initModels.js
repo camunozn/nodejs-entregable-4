@@ -4,6 +4,10 @@ const Messages = require('./message.model');
 const ChatsUsers = require('./chatUser.model');
 
 const initModels = () => {
+  // User - Chat
+  Users.hasMany(Chats, { foreignKey: 'user_id' });
+  Chats.belongsTo(Users, { foreignKey: 'user_id' });
+
   // User - ChatUser
   Users.hasMany(ChatsUsers, { foreignKey: 'user_id' });
   ChatsUsers.belongsTo(Users, { foreignKey: 'user_id' });
