@@ -1,27 +1,23 @@
 const { DataTypes } = require('sequelize');
 const db = require('../utils/database');
 
-const Messages = db.define(
-  'messages',
+const ChatsUsers = db.define(
+  'chats_users',
   {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    content: {
-      type: DataTypes.TEXT,
+    chatId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      field: 'chat_id',
     },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       field: 'user_id',
-    },
-    chatId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      field: 'chat_id',
     },
   },
   {
@@ -29,4 +25,4 @@ const Messages = db.define(
   }
 );
 
-module.exports = Messages;
+module.exports = ChatsUsers;
