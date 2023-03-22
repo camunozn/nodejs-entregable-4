@@ -3,6 +3,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const db = require('./utils/database');
 const initModels = require('./models/initModels');
+const chatRoutes = require('./routes/chat.routes');
+const userRoutes = require('./routes/user.routes');
 
 initModels();
 
@@ -25,6 +27,9 @@ db.sync({ alter: true })
     console.log('Database synchronized');
   })
   .catch(error => console.log(error));
+
+app.use('api/v1/users', userRoutes);
+app.use('/api/v1/chats', chatRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome to my API');
